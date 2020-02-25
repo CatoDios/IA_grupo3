@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">Green Doctor</string>
-    <string name="buttonSelectPhoto">Select Photo</string>
-    <string name="buttonTakePhoto">Start Camera</string>
-    <string name="buttonDiagnose">Detect</string>
-    <string name="defaultImage">Default image set now...</string>
+    <string name="app_name">Plants</string>
+    <string name="buttonSelectPhoto">Escoger foto</string>
+    <string name="buttonTakePhoto">Iniciar cámara</string>
+    <string name="buttonDiagnose">Detectar</string>
+    <string name="defaultImage">Imagen default colocada…</string>
     <string name="descriptionImage">View for displaying image</string>
 </resources>

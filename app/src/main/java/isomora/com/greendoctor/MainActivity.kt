@@ -53,8 +53,11 @@ class MainActivity : AppCompatActivity() {
             startActivityForResult(callGalleryIntent, mGalleryRequestCode)
         }
         mDetectButton.setOnClickListener {
+                progressBar1.max=1*100
+                val traductor=Traductor()
                 val results = mClassifier.recognizeImage(mBitmap).firstOrNull()
-                mResultTextView.text= results?.title+"\n Confidence:"+results?.confidence
+                mResultTextView.text= traductor.Traduce(results?.title)+"\n Probabilidad:"+results?.confidence
+                progressBar1.progress= ((results?.confidence)?.times(100))?.toInt() ?: 0
 
         }
     }
@@ -65,13 +68,13 @@ class MainActivity : AppCompatActivity() {
             if(resultCode == Activity.RESULT_OK && data != null) {
                 mBitmap = data.extras!!.get("data") as Bitmap
                 mBitmap = scaleImage(mBitmap)
-                val toast = Toast.makeText(this, ("Image crop to: w= ${mBitmap.width} h= ${mBitmap.height}"), Toast.LENGTH_LONG)
-                toast.setGravity(Gravity.BOTTOM, 0, 20)
-                toast.show()
+                //val toast = Toast.makeText(this, ("Image crop to: w= ${mBitmap.width} h= ${mBitmap.height}"), Toast.LENGTH_LONG)
+                //toast.setGravity(Gravity.BOTTOM, 0, 20)
+                //toast.show()
                 mPhotoImageView.setImageBitmap(mBitmap)
-                mResultTextView.text= "Your photo image set now."
+                mResultTextView.text= "Tu imagen está lista ahora."
             } else {
-                Toast.makeText(this, "Camera cancel..", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Cancelado", Toast.LENGTH_LONG).show()
             }
         } else if(requestCode == mGalleryRequestCode) {
             if (data != null) {
@@ -106,4 +109,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 }
+
+
+
 
